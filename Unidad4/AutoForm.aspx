@@ -12,6 +12,7 @@
             <div class="mb-3">
                 <label for="txtModelo" class="form-label">Modelo</label>
                 <asp:TextBox runat="server" ID="txtModelo" CssClass="form-control"></asp:TextBox>
+                
             </div>
             <div class="mb-3">
                 <label for="txtDescripcion" class="form-label">Modelo</label>
@@ -27,12 +28,12 @@
             </div>
             <asp:CheckBox ID="ckbUsado" runat="server" Text="Usado" CssClass="custom-form-style" />
             <div class="mb-3">
-                <asp:RadioButton ID="rdbImportado" Text="Importado" runat="server" groupName="Importado" AutoPostBack="true" OnCheckedChanged="rdbImportado_CheckedChanged" />
-                <asp:RadioButton ID="rdbNacional" Text="Nacional" runat="server" groupName="Importado" AutoPostBack="true" Checked="true" OnCheckedChanged="rdbNacional_CheckedChanged"/>
+                <asp:RadioButton ID="rdbImportado" Text="Importado" runat="server" groupName="Importado" AutoPostBack="true" />
+                <asp:RadioButton ID="rdbNacional" Text="Nacional" runat="server" groupName="Importado" AutoPostBack="true"/>
             </div>
             <div class="mb-3">
                 <asp:Button ID="btnAceptar"  CssClass="btn btn-dark" Text="Aceptar" runat="server" OnClick="btnAceptar_Click"/>
-                <a href="Default.aspx" >Cancelar</a>
+                <a href="Default.aspx">Cancelar</a>
             </div>
         </div>
     </div>

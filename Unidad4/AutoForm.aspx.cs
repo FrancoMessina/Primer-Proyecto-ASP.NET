@@ -16,6 +16,20 @@ namespace Unidad4
                 this.ddlColores.DataSource = Enum.GetNames(typeof(EColores));
                 this.ddlColores.DataBind();
             }
+            if (Request.QueryString["Id"] != null)
+            {
+                var id = int.Parse(Request.QueryString["Id"]);
+                Auto selecionado = ((List<Auto>)Session["ListaAutos"]).Find(x => x.Id == id);
+                txtId.Text = selecionado.Id.ToString();
+                txtDescripcion.Text = selecionado.Descripcion;
+                txtModelo.Text = selecionado.Modelo;
+                ddlColores.SelectedValue = selecionado.Color;
+                txtFecha.Text = selecionado.Fecha.ToString("yyyy-MM-dd");
+                bool esImportado = selecionado.Importado ? rdbImportado.Checked = true : rdbNacional.Checked = true;
+                bool esUsado = selecionado.Usado ? ckbUsado.Checked = true : ckbUsado.Checked = false;
+                txtId.ReadOnly = true;
+
+            }
             
         }
 
@@ -28,18 +42,9 @@ namespace Unidad4
             autoNuevo.Color = ddlColores.SelectedValue;
             autoNuevo.Fecha = DateTime.Parse(txtFecha.Text);
             autoNuevo.Usado = ckbUsado.Checked;
+            autoNuevo.Importado = rdbImportado.Checked ? true : false;
             ((List<Auto>)Session["ListaAutos"]).Add(autoNuevo);
             Response.Redirect("Default.aspx");
-        }
-
-        protected void rdbImportado_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void rdbNacional_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -20,5 +20,11 @@ namespace Unidad4
             this.dgvAutos.DataSource = Session["ListaAutos"];
             this.dgvAutos.DataBind();
         }
+
+        protected void dgvAutos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var id = dgvAutos.SelectedDataKey.Value;
+            Response.Redirect($"AutoForm.aspx/?Id={id}");
+        }
     }
 }
